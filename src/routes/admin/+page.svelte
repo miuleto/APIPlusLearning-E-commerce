@@ -14,24 +14,19 @@
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 	{@render dashboardCard({
-		title: 'Total Sales',
+		title: 'Sales',
 		subtitle: `${formatNumber(salesData.numberOfSales)} orders`,
 		body: formatCurrency(salesData.amount)
 	})}
 	{@render dashboardCard({
-		title: 'Total Sales',
-		subtitle: 'This Month',
-		body: '$1000.00'
+		title: 'Customers',
+		subtitle: `${formatCurrency(userData.averageValuePerUser)} Average Value`,
+		body: formatNumber(userData.userCount)
 	})}
 	{@render dashboardCard({
-		title: 'Total Sales',
-		subtitle: 'This Month',
-		body: '$1000.00'
-	})}
-	{@render dashboardCard({
-		title: 'Total Sales',
-		subtitle: 'This Month',
-		body: '$1000.00'
+		title: 'Active Products',
+		subtitle: `${formatNumber(productData.inactiveCount)} Inactive`,
+		body: formatNumber(productData.activeCount)
 	})}
 </div>
 
