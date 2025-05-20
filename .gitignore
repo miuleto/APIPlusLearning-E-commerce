@@ -24,6 +24,8 @@ vite.config.ts.timestamp-*
 pnpm-lock.yaml
 
 # Personals
+static
 products/
+!/src/routes/(customerFacing)/products
 migrations/
 dev.*
