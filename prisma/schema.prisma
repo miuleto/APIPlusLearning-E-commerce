@@ -37,9 +37,10 @@ model User {
 }
 
 model Session {
-  id     String @id
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Order {
@@ -53,10 +54,10 @@ model Order {
   updatedAt    DateTime @updatedAt
 }
 
-model DownloadVerification{
-  id String @id @default(uuid())
+model DownloadVerification {
+  id        String   @id @default(uuid())
   expiredAt DateTime
-  createdAt    DateTime @default(now())
-  productId    String
-  product      Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
 }

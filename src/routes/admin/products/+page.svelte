@@ -54,18 +54,27 @@
                 <DropdownMenu.Item href='/admin/products/{product.id}/edit'>Edit</DropdownMenu.Item>
                 <!--toggle active status-->
                 <form action= "?/toggleAvailability" method="POST" use:enhance>
-                  <Button type = "submit" class = 'w-full'>
+                  <button type = "submit" class = 'w-full'>
+					<DropdownMenu.Item>
                     {#if product.isAvailableForPurchase}
                       Deactivate
                       {:else}
                       Activate
                     {/if}
-                  </Button>
+					</DropdownMenu.Item>
+                  </button>
                   <input type="hidden" name='id' value={product.id}>
                   <input type="checkbox" name='isAvailableForPurchase' class="hidden" checked = {!product.isAvailableForPurchase}>
                   <!--delete-->
                   </form>
-                  <form action=""></form>
+                  <form action="?/deleteProduct" use:enhance method= "POST">
+					<button class="w-full text-destructive" disabled={product._count.Order > 0}>
+						<DropdownMenu.Item type="submit" disabled={product._count.Order > 0}>
+							Delete
+						</DropdownMenu.Item>
+					</button>
+					<input type="hidden" name="id" value={product.id}>
+				</form>
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				</Table.Cell>
